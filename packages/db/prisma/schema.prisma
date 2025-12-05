@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model User{
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  projects Project[]
+}
+
+model Project{
+  id Int @id @default(autoincrement())
+  name String 
+  userId Int 
+  user User @relation(fields: [userId], references: [id])
+  scenes Scene[]
+}
+
+model Scene{
+   id Int @id @default(autoincrement())
+   name String
+   projectId Int
+   project Project @relation(fields: [projectId],references: [id])
+   video String
+   prompts Prompt[]
+}
+
+
+model Prompt{
+   id Int @id @default(autoincrement())
+   type PromptType
+   content String
+   sceneId Int
+   scene Scene @relation(fields: [sceneId],references: [id])
+}
+
+
+enum PromptType{
+  USER
+  AI
+}
