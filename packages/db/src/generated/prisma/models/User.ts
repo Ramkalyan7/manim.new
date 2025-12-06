@@ -200,14 +200,14 @@ export type UserWhereInput = {
   id?: Prisma.IntFilter<"User"> | number
   email?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
-  projects?: Prisma.ProjectListRelationFilter
+  Project?: Prisma.ProjectListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  projects?: Prisma.ProjectOrderByRelationAggregateInput
+  Project?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -217,7 +217,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   password?: Prisma.StringFilter<"User"> | string
-  projects?: Prisma.ProjectListRelationFilter
+  Project?: Prisma.ProjectListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -243,27 +243,27 @@ export type UserScalarWhereWithAggregatesInput = {
 export type UserCreateInput = {
   email: string
   password: string
-  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  Project?: Prisma.ProjectCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: number
   email: string
   password: string
-  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  Project?: Prisma.ProjectUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -326,53 +326,53 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type UserCreateNestedOneWithoutProjectsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput
+export type UserCreateNestedOneWithoutProjectInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutProjectsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput
-  upsert?: Prisma.UserUpsertWithoutProjectsInput
+export type UserUpdateOneRequiredWithoutProjectNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectInput
+  upsert?: Prisma.UserUpsertWithoutProjectInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProjectsInput, Prisma.UserUpdateWithoutProjectsInput>, Prisma.UserUncheckedUpdateWithoutProjectsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProjectInput, Prisma.UserUpdateWithoutProjectInput>, Prisma.UserUncheckedUpdateWithoutProjectInput>
 }
 
-export type UserCreateWithoutProjectsInput = {
+export type UserCreateWithoutProjectInput = {
   email: string
   password: string
 }
 
-export type UserUncheckedCreateWithoutProjectsInput = {
+export type UserUncheckedCreateWithoutProjectInput = {
   id?: number
   email: string
   password: string
 }
 
-export type UserCreateOrConnectWithoutProjectsInput = {
+export type UserCreateOrConnectWithoutProjectInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput>
 }
 
-export type UserUpsertWithoutProjectsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutProjectsInput, Prisma.UserUncheckedUpdateWithoutProjectsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
+export type UserUpsertWithoutProjectInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutProjectInput, Prisma.UserUncheckedUpdateWithoutProjectInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutProjectsInput = {
+export type UserUpdateToOneWithWhereWithoutProjectInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutProjectsInput, Prisma.UserUncheckedUpdateWithoutProjectsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutProjectInput, Prisma.UserUncheckedUpdateWithoutProjectInput>
 }
 
-export type UserUpdateWithoutProjectsInput = {
+export type UserUpdateWithoutProjectInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type UserUncheckedUpdateWithoutProjectsInput = {
+export type UserUncheckedUpdateWithoutProjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -384,11 +384,11 @@ export type UserUncheckedUpdateWithoutProjectsInput = {
  */
 
 export type UserCountOutputType = {
-  projects: number
+  Project: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  projects?: boolean | UserCountOutputTypeCountProjectsArgs
+  Project?: boolean | UserCountOutputTypeCountProjectArgs
 }
 
 /**
@@ -404,7 +404,7 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountProjectArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ProjectWhereInput
 }
 
@@ -413,7 +413,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   email?: boolean
   password?: boolean
-  projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
+  Project?: boolean | Prisma.User$ProjectArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -437,7 +437,7 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
+  Project?: boolean | Prisma.User$ProjectArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -446,7 +446,7 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    projects: Prisma.$ProjectPayload<ExtArgs>[]
+    Project: Prisma.$ProjectPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -846,7 +846,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  projects<T extends Prisma.User$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Project<T extends Prisma.User$ProjectArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ProjectArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1267,9 +1267,9 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.projects
+ * User.Project
  */
-export type User$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$ProjectArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Project
    */

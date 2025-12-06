@@ -28,11 +28,6 @@ export type User = Prisma.UserModel
  */
 export type Project = Prisma.ProjectModel
 /**
- * Model Scene
- * 
- */
-export type Scene = Prisma.SceneModel
-/**
  * Model Prompt
  * 
  */

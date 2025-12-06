@@ -28,66 +28,72 @@ export type AggregatePrompt = {
 
 export type PromptAvgAggregateOutputType = {
   id: number | null
-  sceneId: number | null
+  projectId: number | null
 }
 
 export type PromptSumAggregateOutputType = {
   id: number | null
-  sceneId: number | null
+  projectId: number | null
 }
 
 export type PromptMinAggregateOutputType = {
   id: number | null
   type: $Enums.PromptType | null
   content: string | null
-  sceneId: number | null
+  projectId: number | null
+  createdAt: Date | null
 }
 
 export type PromptMaxAggregateOutputType = {
   id: number | null
   type: $Enums.PromptType | null
   content: string | null
-  sceneId: number | null
+  projectId: number | null
+  createdAt: Date | null
 }
 
 export type PromptCountAggregateOutputType = {
   id: number
   type: number
   content: number
-  sceneId: number
+  projectId: number
+  createdAt: number
   _all: number
 }
 
 
 export type PromptAvgAggregateInputType = {
   id?: true
-  sceneId?: true
+  projectId?: true
 }
 
 export type PromptSumAggregateInputType = {
   id?: true
-  sceneId?: true
+  projectId?: true
 }
 
 export type PromptMinAggregateInputType = {
   id?: true
   type?: true
   content?: true
-  sceneId?: true
+  projectId?: true
+  createdAt?: true
 }
 
 export type PromptMaxAggregateInputType = {
   id?: true
   type?: true
   content?: true
-  sceneId?: true
+  projectId?: true
+  createdAt?: true
 }
 
 export type PromptCountAggregateInputType = {
   id?: true
   type?: true
   content?: true
-  sceneId?: true
+  projectId?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -181,7 +187,8 @@ export type PromptGroupByOutputType = {
   id: number
   type: $Enums.PromptType
   content: string
-  sceneId: number
+  projectId: number
+  createdAt: Date
   _count: PromptCountAggregateOutputType | null
   _avg: PromptAvgAggregateOutputType | null
   _sum: PromptSumAggregateOutputType | null
@@ -211,16 +218,18 @@ export type PromptWhereInput = {
   id?: Prisma.IntFilter<"Prompt"> | number
   type?: Prisma.EnumPromptTypeFilter<"Prompt"> | $Enums.PromptType
   content?: Prisma.StringFilter<"Prompt"> | string
-  sceneId?: Prisma.IntFilter<"Prompt"> | number
-  scene?: Prisma.XOR<Prisma.SceneScalarRelationFilter, Prisma.SceneWhereInput>
+  projectId?: Prisma.IntFilter<"Prompt"> | number
+  createdAt?: Prisma.DateTimeFilter<"Prompt"> | Date | string
+  Project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
 }
 
 export type PromptOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
-  scene?: Prisma.SceneOrderByWithRelationInput
+  projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  Project?: Prisma.ProjectOrderByWithRelationInput
 }
 
 export type PromptWhereUniqueInput = Prisma.AtLeast<{
@@ -230,15 +239,17 @@ export type PromptWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PromptWhereInput | Prisma.PromptWhereInput[]
   type?: Prisma.EnumPromptTypeFilter<"Prompt"> | $Enums.PromptType
   content?: Prisma.StringFilter<"Prompt"> | string
-  sceneId?: Prisma.IntFilter<"Prompt"> | number
-  scene?: Prisma.XOR<Prisma.SceneScalarRelationFilter, Prisma.SceneWhereInput>
+  projectId?: Prisma.IntFilter<"Prompt"> | number
+  createdAt?: Prisma.DateTimeFilter<"Prompt"> | Date | string
+  Project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
 }, "id">
 
 export type PromptOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.PromptCountOrderByAggregateInput
   _avg?: Prisma.PromptAvgOrderByAggregateInput
   _max?: Prisma.PromptMaxOrderByAggregateInput
@@ -253,52 +264,60 @@ export type PromptScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Prompt"> | number
   type?: Prisma.EnumPromptTypeWithAggregatesFilter<"Prompt"> | $Enums.PromptType
   content?: Prisma.StringWithAggregatesFilter<"Prompt"> | string
-  sceneId?: Prisma.IntWithAggregatesFilter<"Prompt"> | number
+  projectId?: Prisma.IntWithAggregatesFilter<"Prompt"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Prompt"> | Date | string
 }
 
 export type PromptCreateInput = {
   type: $Enums.PromptType
   content: string
-  scene: Prisma.SceneCreateNestedOneWithoutPromptsInput
+  createdAt?: Date | string
+  Project: Prisma.ProjectCreateNestedOneWithoutPromptsInput
 }
 
 export type PromptUncheckedCreateInput = {
   id?: number
   type: $Enums.PromptType
   content: string
-  sceneId: number
+  projectId: number
+  createdAt?: Date | string
 }
 
 export type PromptUpdateInput = {
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  scene?: Prisma.SceneUpdateOneRequiredWithoutPromptsNestedInput
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutPromptsNestedInput
 }
 
 export type PromptUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  sceneId?: Prisma.IntFieldUpdateOperationsInput | number
+  projectId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PromptCreateManyInput = {
   id?: number
   type: $Enums.PromptType
   content: string
-  sceneId: number
+  projectId: number
+  createdAt?: Date | string
 }
 
 export type PromptUpdateManyMutationInput = {
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PromptUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  sceneId?: Prisma.IntFieldUpdateOperationsInput | number
+  projectId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PromptListRelationFilter = {
@@ -315,72 +334,75 @@ export type PromptCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type PromptAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
 }
 
 export type PromptMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type PromptMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type PromptSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  sceneId?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
 }
 
-export type PromptCreateNestedManyWithoutSceneInput = {
-  create?: Prisma.XOR<Prisma.PromptCreateWithoutSceneInput, Prisma.PromptUncheckedCreateWithoutSceneInput> | Prisma.PromptCreateWithoutSceneInput[] | Prisma.PromptUncheckedCreateWithoutSceneInput[]
-  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutSceneInput | Prisma.PromptCreateOrConnectWithoutSceneInput[]
-  createMany?: Prisma.PromptCreateManySceneInputEnvelope
+export type PromptCreateNestedManyWithoutProjectInput = {
+  create?: Prisma.XOR<Prisma.PromptCreateWithoutProjectInput, Prisma.PromptUncheckedCreateWithoutProjectInput> | Prisma.PromptCreateWithoutProjectInput[] | Prisma.PromptUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutProjectInput | Prisma.PromptCreateOrConnectWithoutProjectInput[]
+  createMany?: Prisma.PromptCreateManyProjectInputEnvelope
   connect?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
 }
 
-export type PromptUncheckedCreateNestedManyWithoutSceneInput = {
-  create?: Prisma.XOR<Prisma.PromptCreateWithoutSceneInput, Prisma.PromptUncheckedCreateWithoutSceneInput> | Prisma.PromptCreateWithoutSceneInput[] | Prisma.PromptUncheckedCreateWithoutSceneInput[]
-  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutSceneInput | Prisma.PromptCreateOrConnectWithoutSceneInput[]
-  createMany?: Prisma.PromptCreateManySceneInputEnvelope
+export type PromptUncheckedCreateNestedManyWithoutProjectInput = {
+  create?: Prisma.XOR<Prisma.PromptCreateWithoutProjectInput, Prisma.PromptUncheckedCreateWithoutProjectInput> | Prisma.PromptCreateWithoutProjectInput[] | Prisma.PromptUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutProjectInput | Prisma.PromptCreateOrConnectWithoutProjectInput[]
+  createMany?: Prisma.PromptCreateManyProjectInputEnvelope
   connect?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
 }
 
-export type PromptUpdateManyWithoutSceneNestedInput = {
-  create?: Prisma.XOR<Prisma.PromptCreateWithoutSceneInput, Prisma.PromptUncheckedCreateWithoutSceneInput> | Prisma.PromptCreateWithoutSceneInput[] | Prisma.PromptUncheckedCreateWithoutSceneInput[]
-  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutSceneInput | Prisma.PromptCreateOrConnectWithoutSceneInput[]
-  upsert?: Prisma.PromptUpsertWithWhereUniqueWithoutSceneInput | Prisma.PromptUpsertWithWhereUniqueWithoutSceneInput[]
-  createMany?: Prisma.PromptCreateManySceneInputEnvelope
+export type PromptUpdateManyWithoutProjectNestedInput = {
+  create?: Prisma.XOR<Prisma.PromptCreateWithoutProjectInput, Prisma.PromptUncheckedCreateWithoutProjectInput> | Prisma.PromptCreateWithoutProjectInput[] | Prisma.PromptUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutProjectInput | Prisma.PromptCreateOrConnectWithoutProjectInput[]
+  upsert?: Prisma.PromptUpsertWithWhereUniqueWithoutProjectInput | Prisma.PromptUpsertWithWhereUniqueWithoutProjectInput[]
+  createMany?: Prisma.PromptCreateManyProjectInputEnvelope
   set?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
   disconnect?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
   delete?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
   connect?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
-  update?: Prisma.PromptUpdateWithWhereUniqueWithoutSceneInput | Prisma.PromptUpdateWithWhereUniqueWithoutSceneInput[]
-  updateMany?: Prisma.PromptUpdateManyWithWhereWithoutSceneInput | Prisma.PromptUpdateManyWithWhereWithoutSceneInput[]
+  update?: Prisma.PromptUpdateWithWhereUniqueWithoutProjectInput | Prisma.PromptUpdateWithWhereUniqueWithoutProjectInput[]
+  updateMany?: Prisma.PromptUpdateManyWithWhereWithoutProjectInput | Prisma.PromptUpdateManyWithWhereWithoutProjectInput[]
   deleteMany?: Prisma.PromptScalarWhereInput | Prisma.PromptScalarWhereInput[]
 }
 
-export type PromptUncheckedUpdateManyWithoutSceneNestedInput = {
-  create?: Prisma.XOR<Prisma.PromptCreateWithoutSceneInput, Prisma.PromptUncheckedCreateWithoutSceneInput> | Prisma.PromptCreateWithoutSceneInput[] | Prisma.PromptUncheckedCreateWithoutSceneInput[]
-  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutSceneInput | Prisma.PromptCreateOrConnectWithoutSceneInput[]
-  upsert?: Prisma.PromptUpsertWithWhereUniqueWithoutSceneInput | Prisma.PromptUpsertWithWhereUniqueWithoutSceneInput[]
-  createMany?: Prisma.PromptCreateManySceneInputEnvelope
+export type PromptUncheckedUpdateManyWithoutProjectNestedInput = {
+  create?: Prisma.XOR<Prisma.PromptCreateWithoutProjectInput, Prisma.PromptUncheckedCreateWithoutProjectInput> | Prisma.PromptCreateWithoutProjectInput[] | Prisma.PromptUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.PromptCreateOrConnectWithoutProjectInput | Prisma.PromptCreateOrConnectWithoutProjectInput[]
+  upsert?: Prisma.PromptUpsertWithWhereUniqueWithoutProjectInput | Prisma.PromptUpsertWithWhereUniqueWithoutProjectInput[]
+  createMany?: Prisma.PromptCreateManyProjectInputEnvelope
   set?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
   disconnect?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
   delete?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
   connect?: Prisma.PromptWhereUniqueInput | Prisma.PromptWhereUniqueInput[]
-  update?: Prisma.PromptUpdateWithWhereUniqueWithoutSceneInput | Prisma.PromptUpdateWithWhereUniqueWithoutSceneInput[]
-  updateMany?: Prisma.PromptUpdateManyWithWhereWithoutSceneInput | Prisma.PromptUpdateManyWithWhereWithoutSceneInput[]
+  update?: Prisma.PromptUpdateWithWhereUniqueWithoutProjectInput | Prisma.PromptUpdateWithWhereUniqueWithoutProjectInput[]
+  updateMany?: Prisma.PromptUpdateManyWithWhereWithoutProjectInput | Prisma.PromptUpdateManyWithWhereWithoutProjectInput[]
   deleteMany?: Prisma.PromptScalarWhereInput | Prisma.PromptScalarWhereInput[]
 }
 
@@ -388,41 +410,47 @@ export type EnumPromptTypeFieldUpdateOperationsInput = {
   set?: $Enums.PromptType
 }
 
-export type PromptCreateWithoutSceneInput = {
-  type: $Enums.PromptType
-  content: string
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
-export type PromptUncheckedCreateWithoutSceneInput = {
+export type PromptCreateWithoutProjectInput = {
+  type: $Enums.PromptType
+  content: string
+  createdAt?: Date | string
+}
+
+export type PromptUncheckedCreateWithoutProjectInput = {
   id?: number
   type: $Enums.PromptType
   content: string
+  createdAt?: Date | string
 }
 
-export type PromptCreateOrConnectWithoutSceneInput = {
+export type PromptCreateOrConnectWithoutProjectInput = {
   where: Prisma.PromptWhereUniqueInput
-  create: Prisma.XOR<Prisma.PromptCreateWithoutSceneInput, Prisma.PromptUncheckedCreateWithoutSceneInput>
+  create: Prisma.XOR<Prisma.PromptCreateWithoutProjectInput, Prisma.PromptUncheckedCreateWithoutProjectInput>
 }
 
-export type PromptCreateManySceneInputEnvelope = {
-  data: Prisma.PromptCreateManySceneInput | Prisma.PromptCreateManySceneInput[]
+export type PromptCreateManyProjectInputEnvelope = {
+  data: Prisma.PromptCreateManyProjectInput | Prisma.PromptCreateManyProjectInput[]
   skipDuplicates?: boolean
 }
 
-export type PromptUpsertWithWhereUniqueWithoutSceneInput = {
+export type PromptUpsertWithWhereUniqueWithoutProjectInput = {
   where: Prisma.PromptWhereUniqueInput
-  update: Prisma.XOR<Prisma.PromptUpdateWithoutSceneInput, Prisma.PromptUncheckedUpdateWithoutSceneInput>
-  create: Prisma.XOR<Prisma.PromptCreateWithoutSceneInput, Prisma.PromptUncheckedCreateWithoutSceneInput>
+  update: Prisma.XOR<Prisma.PromptUpdateWithoutProjectInput, Prisma.PromptUncheckedUpdateWithoutProjectInput>
+  create: Prisma.XOR<Prisma.PromptCreateWithoutProjectInput, Prisma.PromptUncheckedCreateWithoutProjectInput>
 }
 
-export type PromptUpdateWithWhereUniqueWithoutSceneInput = {
+export type PromptUpdateWithWhereUniqueWithoutProjectInput = {
   where: Prisma.PromptWhereUniqueInput
-  data: Prisma.XOR<Prisma.PromptUpdateWithoutSceneInput, Prisma.PromptUncheckedUpdateWithoutSceneInput>
+  data: Prisma.XOR<Prisma.PromptUpdateWithoutProjectInput, Prisma.PromptUncheckedUpdateWithoutProjectInput>
 }
 
-export type PromptUpdateManyWithWhereWithoutSceneInput = {
+export type PromptUpdateManyWithWhereWithoutProjectInput = {
   where: Prisma.PromptScalarWhereInput
-  data: Prisma.XOR<Prisma.PromptUpdateManyMutationInput, Prisma.PromptUncheckedUpdateManyWithoutSceneInput>
+  data: Prisma.XOR<Prisma.PromptUpdateManyMutationInput, Prisma.PromptUncheckedUpdateManyWithoutProjectInput>
 }
 
 export type PromptScalarWhereInput = {
@@ -432,30 +460,35 @@ export type PromptScalarWhereInput = {
   id?: Prisma.IntFilter<"Prompt"> | number
   type?: Prisma.EnumPromptTypeFilter<"Prompt"> | $Enums.PromptType
   content?: Prisma.StringFilter<"Prompt"> | string
-  sceneId?: Prisma.IntFilter<"Prompt"> | number
+  projectId?: Prisma.IntFilter<"Prompt"> | number
+  createdAt?: Prisma.DateTimeFilter<"Prompt"> | Date | string
 }
 
-export type PromptCreateManySceneInput = {
+export type PromptCreateManyProjectInput = {
   id?: number
   type: $Enums.PromptType
   content: string
+  createdAt?: Date | string
 }
 
-export type PromptUpdateWithoutSceneInput = {
+export type PromptUpdateWithoutProjectInput = {
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type PromptUncheckedUpdateWithoutSceneInput = {
+export type PromptUncheckedUpdateWithoutProjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type PromptUncheckedUpdateManyWithoutSceneInput = {
+export type PromptUncheckedUpdateManyWithoutProjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumPromptTypeFieldUpdateOperationsInput | $Enums.PromptType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -464,54 +497,59 @@ export type PromptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   type?: boolean
   content?: boolean
-  sceneId?: boolean
-  scene?: boolean | Prisma.SceneDefaultArgs<ExtArgs>
+  projectId?: boolean
+  createdAt?: boolean
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prompt"]>
 
 export type PromptSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
   content?: boolean
-  sceneId?: boolean
-  scene?: boolean | Prisma.SceneDefaultArgs<ExtArgs>
+  projectId?: boolean
+  createdAt?: boolean
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prompt"]>
 
 export type PromptSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
   content?: boolean
-  sceneId?: boolean
-  scene?: boolean | Prisma.SceneDefaultArgs<ExtArgs>
+  projectId?: boolean
+  createdAt?: boolean
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prompt"]>
 
 export type PromptSelectScalar = {
   id?: boolean
   type?: boolean
   content?: boolean
-  sceneId?: boolean
+  projectId?: boolean
+  createdAt?: boolean
 }
 
-export type PromptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "content" | "sceneId", ExtArgs["result"]["prompt"]>
+export type PromptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "content" | "projectId" | "createdAt", ExtArgs["result"]["prompt"]>
 export type PromptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  scene?: boolean | Prisma.SceneDefaultArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 export type PromptIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  scene?: boolean | Prisma.SceneDefaultArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 export type PromptIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  scene?: boolean | Prisma.SceneDefaultArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 
 export type $PromptPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Prompt"
   objects: {
-    scene: Prisma.$ScenePayload<ExtArgs>
+    Project: Prisma.$ProjectPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     type: $Enums.PromptType
     content: string
-    sceneId: number
+    projectId: number
+    createdAt: Date
   }, ExtArgs["result"]["prompt"]>
   composites: {}
 }
@@ -906,7 +944,7 @@ readonly fields: PromptFieldRefs;
  */
 export interface Prisma__PromptClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  scene<T extends Prisma.SceneDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SceneDefaultArgs<ExtArgs>>): Prisma.Prisma__SceneClient<runtime.Types.Result.GetResult<Prisma.$ScenePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Project<T extends Prisma.ProjectDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProjectDefaultArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -939,7 +977,8 @@ export interface PromptFieldRefs {
   readonly id: Prisma.FieldRef<"Prompt", 'Int'>
   readonly type: Prisma.FieldRef<"Prompt", 'PromptType'>
   readonly content: Prisma.FieldRef<"Prompt", 'String'>
-  readonly sceneId: Prisma.FieldRef<"Prompt", 'Int'>
+  readonly projectId: Prisma.FieldRef<"Prompt", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Prompt", 'DateTime'>
 }
     
 

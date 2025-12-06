@@ -51,7 +51,6 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   User: 'User',
   Project: 'Project',
-  Scene: 'Scene',
   Prompt: 'Prompt'
 } as const
 
@@ -83,27 +82,19 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const ProjectScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  video: 'video',
   userId: 'userId'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
-export const SceneScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  projectId: 'projectId',
-  video: 'video'
-} as const
-
-export type SceneScalarFieldEnum = (typeof SceneScalarFieldEnum)[keyof typeof SceneScalarFieldEnum]
-
-
 export const PromptScalarFieldEnum = {
   id: 'id',
   type: 'type',
   content: 'content',
-  sceneId: 'sceneId'
+  projectId: 'projectId',
+  createdAt: 'createdAt'
 } as const
 
 export type PromptScalarFieldEnum = (typeof PromptScalarFieldEnum)[keyof typeof PromptScalarFieldEnum]
@@ -123,4 +114,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

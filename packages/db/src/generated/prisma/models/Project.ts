@@ -39,18 +39,21 @@ export type ProjectSumAggregateOutputType = {
 export type ProjectMinAggregateOutputType = {
   id: number | null
   name: string | null
+  video: string | null
   userId: number | null
 }
 
 export type ProjectMaxAggregateOutputType = {
   id: number | null
   name: string | null
+  video: string | null
   userId: number | null
 }
 
 export type ProjectCountAggregateOutputType = {
   id: number
   name: number
+  video: number
   userId: number
   _all: number
 }
@@ -69,18 +72,21 @@ export type ProjectSumAggregateInputType = {
 export type ProjectMinAggregateInputType = {
   id?: true
   name?: true
+  video?: true
   userId?: true
 }
 
 export type ProjectMaxAggregateInputType = {
   id?: true
   name?: true
+  video?: true
   userId?: true
 }
 
 export type ProjectCountAggregateInputType = {
   id?: true
   name?: true
+  video?: true
   userId?: true
   _all?: true
 }
@@ -174,6 +180,7 @@ export type ProjectGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type ProjectGroupByOutputType = {
   id: number
   name: string
+  video: string | null
   userId: number
   _count: ProjectCountAggregateOutputType | null
   _avg: ProjectAvgAggregateOutputType | null
@@ -203,17 +210,19 @@ export type ProjectWhereInput = {
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   id?: Prisma.IntFilter<"Project"> | number
   name?: Prisma.StringFilter<"Project"> | string
+  video?: Prisma.StringNullableFilter<"Project"> | string | null
   userId?: Prisma.IntFilter<"Project"> | number
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  scenes?: Prisma.SceneListRelationFilter
+  User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  prompts?: Prisma.PromptListRelationFilter
 }
 
 export type ProjectOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  video?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
-  user?: Prisma.UserOrderByWithRelationInput
-  scenes?: Prisma.SceneOrderByRelationAggregateInput
+  User?: Prisma.UserOrderByWithRelationInput
+  prompts?: Prisma.PromptOrderByRelationAggregateInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -222,14 +231,16 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProjectWhereInput[]
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   name?: Prisma.StringFilter<"Project"> | string
+  video?: Prisma.StringNullableFilter<"Project"> | string | null
   userId?: Prisma.IntFilter<"Project"> | number
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  scenes?: Prisma.SceneListRelationFilter
+  User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  prompts?: Prisma.PromptListRelationFilter
 }, "id">
 
 export type ProjectOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  video?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   _count?: Prisma.ProjectCountOrderByAggregateInput
   _avg?: Prisma.ProjectAvgOrderByAggregateInput
@@ -244,48 +255,56 @@ export type ProjectScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProjectScalarWhereWithAggregatesInput | Prisma.ProjectScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Project"> | number
   name?: Prisma.StringWithAggregatesFilter<"Project"> | string
+  video?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"Project"> | number
 }
 
 export type ProjectCreateInput = {
   name: string
-  user: Prisma.UserCreateNestedOneWithoutProjectsInput
-  scenes?: Prisma.SceneCreateNestedManyWithoutProjectInput
+  video?: string | null
+  User: Prisma.UserCreateNestedOneWithoutProjectInput
+  prompts?: Prisma.PromptCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateInput = {
   id?: number
   name: string
+  video?: string | null
   userId: number
-  scenes?: Prisma.SceneUncheckedCreateNestedManyWithoutProjectInput
+  prompts?: Prisma.PromptUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  user?: Prisma.UserUpdateOneRequiredWithoutProjectsNestedInput
-  scenes?: Prisma.SceneUpdateManyWithoutProjectNestedInput
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  User?: Prisma.UserUpdateOneRequiredWithoutProjectNestedInput
+  prompts?: Prisma.PromptUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
-  scenes?: Prisma.SceneUncheckedUpdateManyWithoutProjectNestedInput
+  prompts?: Prisma.PromptUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
   id?: number
   name: string
+  video?: string | null
   userId: number
 }
 
 export type ProjectUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ProjectUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -302,6 +321,7 @@ export type ProjectOrderByRelationAggregateInput = {
 export type ProjectCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  video?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -313,12 +333,14 @@ export type ProjectAvgOrderByAggregateInput = {
 export type ProjectMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  video?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
 export type ProjectMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  video?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -374,29 +396,35 @@ export type ProjectUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
-export type ProjectCreateNestedOneWithoutScenesInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutScenesInput, Prisma.ProjectUncheckedCreateWithoutScenesInput>
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutScenesInput
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type ProjectCreateNestedOneWithoutPromptsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutPromptsInput, Prisma.ProjectUncheckedCreateWithoutPromptsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutPromptsInput
   connect?: Prisma.ProjectWhereUniqueInput
 }
 
-export type ProjectUpdateOneRequiredWithoutScenesNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutScenesInput, Prisma.ProjectUncheckedCreateWithoutScenesInput>
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutScenesInput
-  upsert?: Prisma.ProjectUpsertWithoutScenesInput
+export type ProjectUpdateOneRequiredWithoutPromptsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutPromptsInput, Prisma.ProjectUncheckedCreateWithoutPromptsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutPromptsInput
+  upsert?: Prisma.ProjectUpsertWithoutPromptsInput
   connect?: Prisma.ProjectWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutScenesInput, Prisma.ProjectUpdateWithoutScenesInput>, Prisma.ProjectUncheckedUpdateWithoutScenesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutPromptsInput, Prisma.ProjectUpdateWithoutPromptsInput>, Prisma.ProjectUncheckedUpdateWithoutPromptsInput>
 }
 
 export type ProjectCreateWithoutUserInput = {
   name: string
-  scenes?: Prisma.SceneCreateNestedManyWithoutProjectInput
+  video?: string | null
+  prompts?: Prisma.PromptCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutUserInput = {
   id?: number
   name: string
-  scenes?: Prisma.SceneUncheckedCreateNestedManyWithoutProjectInput
+  video?: string | null
+  prompts?: Prisma.PromptUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutUserInput = {
@@ -431,66 +459,75 @@ export type ProjectScalarWhereInput = {
   NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
   id?: Prisma.IntFilter<"Project"> | number
   name?: Prisma.StringFilter<"Project"> | string
+  video?: Prisma.StringNullableFilter<"Project"> | string | null
   userId?: Prisma.IntFilter<"Project"> | number
 }
 
-export type ProjectCreateWithoutScenesInput = {
+export type ProjectCreateWithoutPromptsInput = {
   name: string
-  user: Prisma.UserCreateNestedOneWithoutProjectsInput
+  video?: string | null
+  User: Prisma.UserCreateNestedOneWithoutProjectInput
 }
 
-export type ProjectUncheckedCreateWithoutScenesInput = {
+export type ProjectUncheckedCreateWithoutPromptsInput = {
   id?: number
   name: string
+  video?: string | null
   userId: number
 }
 
-export type ProjectCreateOrConnectWithoutScenesInput = {
+export type ProjectCreateOrConnectWithoutPromptsInput = {
   where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutScenesInput, Prisma.ProjectUncheckedCreateWithoutScenesInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutPromptsInput, Prisma.ProjectUncheckedCreateWithoutPromptsInput>
 }
 
-export type ProjectUpsertWithoutScenesInput = {
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutScenesInput, Prisma.ProjectUncheckedUpdateWithoutScenesInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutScenesInput, Prisma.ProjectUncheckedCreateWithoutScenesInput>
+export type ProjectUpsertWithoutPromptsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutPromptsInput, Prisma.ProjectUncheckedUpdateWithoutPromptsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutPromptsInput, Prisma.ProjectUncheckedCreateWithoutPromptsInput>
   where?: Prisma.ProjectWhereInput
 }
 
-export type ProjectUpdateToOneWithWhereWithoutScenesInput = {
+export type ProjectUpdateToOneWithWhereWithoutPromptsInput = {
   where?: Prisma.ProjectWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutScenesInput, Prisma.ProjectUncheckedUpdateWithoutScenesInput>
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutPromptsInput, Prisma.ProjectUncheckedUpdateWithoutPromptsInput>
 }
 
-export type ProjectUpdateWithoutScenesInput = {
+export type ProjectUpdateWithoutPromptsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  user?: Prisma.UserUpdateOneRequiredWithoutProjectsNestedInput
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  User?: Prisma.UserUpdateOneRequiredWithoutProjectNestedInput
 }
 
-export type ProjectUncheckedUpdateWithoutScenesInput = {
+export type ProjectUncheckedUpdateWithoutPromptsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ProjectCreateManyUserInput = {
   id?: number
   name: string
+  video?: string | null
 }
 
 export type ProjectUpdateWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  scenes?: Prisma.SceneUpdateManyWithoutProjectNestedInput
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prompts?: Prisma.PromptUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  scenes?: Prisma.SceneUncheckedUpdateManyWithoutProjectNestedInput
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prompts?: Prisma.PromptUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  video?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -499,11 +536,11 @@ export type ProjectUncheckedUpdateManyWithoutUserInput = {
  */
 
 export type ProjectCountOutputType = {
-  scenes: number
+  prompts: number
 }
 
 export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  scenes?: boolean | ProjectCountOutputTypeCountScenesArgs
+  prompts?: boolean | ProjectCountOutputTypeCountPromptsArgs
 }
 
 /**
@@ -519,62 +556,67 @@ export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * ProjectCountOutputType without action
  */
-export type ProjectCountOutputTypeCountScenesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SceneWhereInput
+export type ProjectCountOutputTypeCountPromptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PromptWhereInput
 }
 
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  video?: boolean
   userId?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  scenes?: boolean | Prisma.Project$scenesArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  prompts?: boolean | Prisma.Project$promptsArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  video?: boolean
   userId?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  video?: boolean
   userId?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectScalar = {
   id?: boolean
   name?: boolean
+  video?: boolean
   userId?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "userId", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "video" | "userId", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  scenes?: boolean | Prisma.Project$scenesArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  prompts?: boolean | Prisma.Project$promptsArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Project"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
-    scenes: Prisma.$ScenePayload<ExtArgs>[]
+    User: Prisma.$UserPayload<ExtArgs>
+    prompts: Prisma.$PromptPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
+    video: string | null
     userId: number
   }, ExtArgs["result"]["project"]>
   composites: {}
@@ -970,8 +1012,8 @@ readonly fields: ProjectFieldRefs;
  */
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  scenes<T extends Prisma.Project$scenesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$scenesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ScenePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  User<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  prompts<T extends Prisma.Project$promptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$promptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PromptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1003,6 +1045,7 @@ export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.
 export interface ProjectFieldRefs {
   readonly id: Prisma.FieldRef<"Project", 'Int'>
   readonly name: Prisma.FieldRef<"Project", 'String'>
+  readonly video: Prisma.FieldRef<"Project", 'String'>
   readonly userId: Prisma.FieldRef<"Project", 'Int'>
 }
     
@@ -1400,27 +1443,27 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Project.scenes
+ * Project.prompts
  */
-export type Project$scenesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Project$promptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Scene
+   * Select specific fields to fetch from the Prompt
    */
-  select?: Prisma.SceneSelect<ExtArgs> | null
+  select?: Prisma.PromptSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Scene
+   * Omit specific fields from the Prompt
    */
-  omit?: Prisma.SceneOmit<ExtArgs> | null
+  omit?: Prisma.PromptOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SceneInclude<ExtArgs> | null
-  where?: Prisma.SceneWhereInput
-  orderBy?: Prisma.SceneOrderByWithRelationInput | Prisma.SceneOrderByWithRelationInput[]
-  cursor?: Prisma.SceneWhereUniqueInput
+  include?: Prisma.PromptInclude<ExtArgs> | null
+  where?: Prisma.PromptWhereInput
+  orderBy?: Prisma.PromptOrderByWithRelationInput | Prisma.PromptOrderByWithRelationInput[]
+  cursor?: Prisma.PromptWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SceneScalarFieldEnum | Prisma.SceneScalarFieldEnum[]
+  distinct?: Prisma.PromptScalarFieldEnum | Prisma.PromptScalarFieldEnum[]
 }
 
 /**

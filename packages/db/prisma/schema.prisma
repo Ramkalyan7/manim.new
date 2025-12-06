@@ -8,43 +8,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-model User{
-  id Int @id @default(autoincrement())
-  email String @unique
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
   password String
-  projects Project[]
+  Project  Project[]
 }
 
-model Project{
-  id Int @id @default(autoincrement())
-  name String 
-  userId Int 
-  user User @relation(fields: [userId], references: [id])
-  scenes Scene[]
+model Project {
+  id      Int      @id @default(autoincrement())
+  name    String
+  video   String?
+  userId  Int
+  User    User     @relation(fields: [userId], references: [id])
+  prompts Prompt[]
 }
 
-model Scene{
-   id Int @id @default(autoincrement())
-   name String
-   projectId Int
-   project Project @relation(fields: [projectId],references: [id])
-   video String
-   prompts Prompt[]
+model Prompt {
+  id        Int        @id @default(autoincrement())
+  type      PromptType
+  content   String
+  projectId Int
+  Project   Project    @relation(fields: [projectId], references: [id])
+  createdAt DateTime   @default(now())
 }
 
+// model Scene {
+//   id        Int      @id @default(autoincrement())
+//   name      String
+//   projectId Int
+//   video     String
+//   Prompt    Prompt[]
+//   Project   Project  @relation(fields: [projectId], references: [id])
+// }
 
-model Prompt{
-   id Int @id @default(autoincrement())
-   type PromptType
-   content String
-   sceneId Int
-   scene Scene @relation(fields: [sceneId],references: [id])
-}
-
-
-enum PromptType{
-  USER
-  AI
+enum PromptType {
+  user
+  model
 }

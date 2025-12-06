@@ -10,8 +10,8 @@
 */
 
 export const PromptType = {
-  USER: 'USER',
-  AI: 'AI'
+  user: 'user',
+  model: 'model'
 } as const
 
 export type PromptType = (typeof PromptType)[keyof typeof PromptType]

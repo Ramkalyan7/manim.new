@@ -392,7 +392,6 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   User: 'User',
   Project: 'Project',
-  Scene: 'Scene',
   Prompt: 'Prompt'
 } as const
 
@@ -409,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "project" | "scene" | "prompt"
+    modelProps: "user" | "project" | "prompt"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -561,80 +560,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Scene: {
-      payload: Prisma.$ScenePayload<ExtArgs>
-      fields: Prisma.SceneFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.SceneFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.SceneFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>
-        }
-        findFirst: {
-          args: Prisma.SceneFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.SceneFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>
-        }
-        findMany: {
-          args: Prisma.SceneFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>[]
-        }
-        create: {
-          args: Prisma.SceneCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>
-        }
-        createMany: {
-          args: Prisma.SceneCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.SceneCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>[]
-        }
-        delete: {
-          args: Prisma.SceneDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>
-        }
-        update: {
-          args: Prisma.SceneUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>
-        }
-        deleteMany: {
-          args: Prisma.SceneDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.SceneUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.SceneUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>[]
-        }
-        upsert: {
-          args: Prisma.SceneUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScenePayload>
-        }
-        aggregate: {
-          args: Prisma.SceneAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateScene>
-        }
-        groupBy: {
-          args: Prisma.SceneGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.SceneGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.SceneCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.SceneCountAggregateOutputType> | number
-        }
-      }
-    }
     Prompt: {
       payload: Prisma.$PromptPayload<ExtArgs>
       fields: Prisma.PromptFieldRefs
@@ -760,27 +685,19 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const ProjectScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  video: 'video',
   userId: 'userId'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
-export const SceneScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  projectId: 'projectId',
-  video: 'video'
-} as const
-
-export type SceneScalarFieldEnum = (typeof SceneScalarFieldEnum)[keyof typeof SceneScalarFieldEnum]
-
-
 export const PromptScalarFieldEnum = {
   id: 'id',
   type: 'type',
   content: 'content',
-  sceneId: 'sceneId'
+  projectId: 'projectId',
+  createdAt: 'createdAt'
 } as const
 
 export type PromptScalarFieldEnum = (typeof PromptScalarFieldEnum)[keyof typeof PromptScalarFieldEnum]
@@ -800,6 +717,14 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -847,6 +772,20 @@ export type EnumPromptTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'PromptType[]'
  */
 export type ListEnumPromptTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PromptType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -952,7 +891,6 @@ export interface PrismaClientOptions {
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   project?: Prisma.ProjectOmit
-  scene?: Prisma.SceneOmit
   prompt?: Prisma.PromptOmit
 }
 
